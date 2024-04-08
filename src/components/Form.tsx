@@ -10,9 +10,11 @@ interface FormInput {
 }
 
 const Form = ({ formType }: { formType: string }) => {
-  const { login } = useLogin();
-  const { signup } = useSignup();
+  const { login, isLoading, error } = useLogin();
+  const { signup, isLoading: isPending, error: err } = useSignup();
 
+  console.log(isPending);
+  console.log(err);
   const {
     register,
     handleSubmit,

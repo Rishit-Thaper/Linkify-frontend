@@ -56,7 +56,7 @@ const getProfile = async (token: string) => {
 };
 
 const getPublicProfile = async (userId: string) => {
-  const response = await getPublicRequest(GET_PUBLIC_PROFILE, userId);
+  const response = await getPublicRequest(`${GET_PUBLIC_PROFILE}${userId}`);
   return response;
 };
 

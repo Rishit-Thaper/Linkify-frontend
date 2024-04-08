@@ -6,7 +6,7 @@ import {
     ReactNode,
     Dispatch,
   } from "react";
-  import { User } from "@/app/@types/global";
+  import { User } from "../@types/global";
   type AuthAction = {type: "LOGIN"; user: User} | {type: "LOGOUT"};
   type AuthState = {
     user: User | null;

@@ -1,7 +1,8 @@
 //  user endpoints
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-const REGISTER_USER = "/api/v1/user/register";
-const LOGIN_USER = "/api/v1/user/login";
+const API_DEV_BASE_URL = import.meta.env.VITE_DEVELOPMENT_BASE_URL;
+const API_PROD_BASE_URL = import.meta.env.VITE_PRODUCTION_URL;
+const REGISTER_USER = "/api/v1/users/register";
+const LOGIN_USER = "/api/v1/users/login";
 
 //  profile endpoints
 const GET_PROFILE = "/api/v1/profile/getProfile";
@@ -24,7 +25,8 @@ export {
   GET_PROFILE,
   GET_COMPLETE_PROFILE,
   GET_PUBLIC_PROFILE,
-  API_BASE_URL,
+  API_DEV_BASE_URL,
+  API_PROD_BASE_URL,
   CREATE_PROFILE,
   UPDATE_PROFILE,
   UPDATE_AVATAR,

@@ -1,10 +1,12 @@
-import { PROFILE_KEY, USER_KEY } from "../constants/AppConstants";
+import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {
+  const {dispatch} = useAuthContext();
+
   const logout = () => {
-    localStorage.removeItem(USER_KEY);
-    localStorage.removeItem(PROFILE_KEY);
+    localStorage.clear();
     console.log("Logout");
+    dispatch({type:'LOGOUT'});
   };
   return { logout };
 };
