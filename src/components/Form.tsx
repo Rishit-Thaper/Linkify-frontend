@@ -2,9 +2,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { LOGIN, SIGNUP } from "../constants/AppConstants";
 import { useLogin } from "../hooks/useLogin";
 import { useSignup } from "../hooks/useSignup";
-import { Slide, ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 interface FormInput {
   username: string;
   email: string;
@@ -12,6 +13,7 @@ interface FormInput {
 }
 
 const Form = ({ formType }: { formType: string }) => {
+  const navigate = useNavigate();
   const { login, isLoading, error, isSuccess } = useLogin();
   const {
     signup,
@@ -19,21 +21,22 @@ const Form = ({ formType }: { formType: string }) => {
     error: err,
     isSuccess: success,
   } = useSignup();
+  console.log("SUCCESS", success);
+  console.log("SUCCESS", isSuccess);
 
   useEffect(() => {
     if (isLoading || isPending) {
-      toast.loading("loading...");
-    } else {
+      toast.loading("Loading...");
+    } else if (error || err) {
       toast.dismiss();
-    }
-  }, [isLoading, isPending]);
-
-  useEffect(() => {
-    if (error || err) {
       toast.error(error || err);
+    } else {
+      toast.dismiss(); 
+      if (success || isSuccess) {
+        toast.success("Welcome to YourLink!");
+      }
     }
-  }, [err, error]);
-
+  }, [isLoading, isPending, isSuccess, success, error, err]);
   console.log(isPending);
   console.log(err);
   const {
@@ -103,7 +106,6 @@ const Form = ({ formType }: { formType: string }) => {
           value={formType === SIGNUP ? "Signup" : "Login"}
         />
       </form>
-      <ToastContainer position="top-right" theme="dark" transition={Slide} />
     </>
   );
 };

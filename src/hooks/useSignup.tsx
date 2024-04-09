@@ -28,7 +28,7 @@ export const useSignup = () => {
       saveDataLocal(USER_KEY, data.data.user);
       saveDataLocal(TOKEN, data.data.accessToken);
       saveDataLocal(IS_AUTH, true);
-      navigate("/");
+      
       return data;
     },
   });

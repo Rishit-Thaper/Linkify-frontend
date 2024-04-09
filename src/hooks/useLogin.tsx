@@ -3,9 +3,7 @@ import { loginUser } from "../services/ApiServices";
 import { saveDataLocal } from "../storage/storage";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuthContext } from "./useAuthContext";
-import { useNavigate } from "react-router-dom";
 export const useLogin = () => {
-  const navigate = useNavigate();
   const { dispatch } = useAuthContext();
   const queryClient = useQueryClient();
   const loginMutation = useMutation({
@@ -18,7 +16,6 @@ export const useLogin = () => {
       saveDataLocal(USER_KEY, data.data.user);
       saveDataLocal(TOKEN, data.data.token);
       saveDataLocal(IS_AUTH, true);
-      navigate("/");
       return data;
     },
   });
