@@ -1,11 +1,8 @@
-import React from 'react'
-import { AuthChecker } from '../libs/AuthChecker'
+import { AuthChecker } from '../libs/AuthChecker';
 
 const CreateProfile = () => {
     AuthChecker();
-  return (
-    <div>CreateProfile</div>
-  )
-}
+    return <div>CreateProfile</div>;
+};
 
-export default CreateProfile
+export default CreateProfile;
