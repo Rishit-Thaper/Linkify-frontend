@@ -1,5 +1,5 @@
 import { API_DEV_BASE_URL } from '../constants/ApiConstants';
-const postRequest = async (endpoint: string, data: any, token?: string) => {
+const postRequest = async <T>(endpoint: string, data: T, token?: string) => {
     const response = await fetch(API_DEV_BASE_URL + endpoint, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -61,7 +61,7 @@ const getPublicRequest = async (endpoint: string) => {
     return json;
 };
 
-const patchRequest = async (endpoint: string, data: any, token: string) => {
+const patchRequest = async <T>(endpoint: string, data: T, token: string) => {
     const response = await fetch(API_DEV_BASE_URL + endpoint, {
         method: 'PATCH',
         body: JSON.stringify(data),

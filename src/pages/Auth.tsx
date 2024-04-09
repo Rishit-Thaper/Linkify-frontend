@@ -13,7 +13,7 @@ const Auth = () => {
         if (isAuthenticated) {
             navigate('/');
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, navigate]);
 
     const [formType, setFormType] = useState<string>(SIGNUP);
     const { state } = useAuthContext();
