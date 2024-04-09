@@ -1,5 +1,6 @@
 import { useLogout } from "../hooks/useLogout";
 import { AuthChecker } from "../libs/AuthChecker";
+import { getLocalData } from "../storage/storage";
 
 const Home = () => {
   const { logout } = useLogout();

@@ -1,4 +1,4 @@
-import { TOKEN, USER_KEY } from "../constants/AppConstants";
+import { IS_AUTH, TOKEN, USER_KEY } from "../constants/AppConstants";
 import { registerUser } from "../services/ApiServices";
 import { saveDataLocal } from "../storage/storage";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -26,8 +26,8 @@ export const useSignup = () => {
 
       dispatch({ type: "LOGIN", user: data.data.user });
       saveDataLocal(USER_KEY, data.data.user);
-      saveDataLocal(TOKEN, data.data.token);
-      saveDataLocal("isAuthenticated", true);
+      saveDataLocal(TOKEN, data.data.accessToken);
+      saveDataLocal(IS_AUTH, true);
       navigate("/");
       return data;
     },
@@ -38,7 +38,8 @@ export const useSignup = () => {
 
   return {
     signup,
+    isSuccess:registerMutation.isSuccess,
     isLoading: registerMutation.isPending,
-    error: registerMutation.error,
+    error: registerMutation.error?.message,
   };
 };
