@@ -1,4 +1,11 @@
-import { postRequest, getRequest, getPublicRequest, patchRequest, deleteRequest } from './ApiHelper';
+import {
+    postRequest,
+    getRequest,
+    getPublicRequest,
+    patchRequest,
+    deleteRequest,
+    postProfileRequest,
+} from './ApiHelper';
 
 import {
     REGISTER_USER,
@@ -55,13 +62,8 @@ const getCompleteProfile = async (token: string) => {
     return response;
 };
 
-const createProfile = async (dateOfBirth: string, bio: string, avatar: string, token: string) => {
-    const data = {
-        dateOfBirth,
-        bio,
-        avatar,
-    };
-    const response = await postRequest(CREATE_PROFILE, data, token);
+const createProfile = async (formData: FormData, token: string) => {
+    const response = await postProfileRequest(CREATE_PROFILE, formData, token);
     return response;
 };
 

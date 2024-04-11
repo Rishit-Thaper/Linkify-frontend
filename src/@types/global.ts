@@ -9,7 +9,7 @@ export interface User {
 
 export interface Profile {
     bio: string;
-    avatar: string;
+    avatar: FileList;
     dateOfBirth: string;
 }
 

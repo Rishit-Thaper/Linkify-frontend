@@ -1,5 +1,6 @@
 import { API_DEV_BASE_URL } from '../constants/ApiConstants';
 const postRequest = async <T>(endpoint: string, data: T, token?: string) => {
+    console.log('APIHELPER', data);
     const response = await fetch(API_DEV_BASE_URL + endpoint, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -8,13 +9,46 @@ const postRequest = async <T>(endpoint: string, data: T, token?: string) => {
             Authorization: `Bearer ${token}`,
         },
     });
-    const contentType = response.headers.get('content-type');
-    if (contentType && contentType.includes('text/html')) {
-        // If it's HTML, parse the text response
-        const errorMessage = await response.text();
-        // Extract error message from HTML response (you may need to customize this)
-        throw new Error(errorMessage);
+    const json = await response.json();
+    console.log(json);
+
+    if (!response.ok) {
+        throw new Error(json.message);
     }
+
+    console.log(json);
+    return json;
+};
+
+const postProfileRequest = async (endpoint: string, formData: FormData, token?: string) => {
+    console.log('APIHELPER', formData);
+    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const json = await response.json();
+    console.log(json);
+
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+
+    console.log(json);
+    return json;
+};
+
+const updateAvatarRequest = async (endpoint: string, formData: FormData, token?: string) => {
+    console.log('APIHELPER', formData);
+    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+        method: 'PATCH',
+        body: formData,
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     const json = await response.json();
     console.log(json);
 
@@ -98,4 +132,12 @@ const deleteRequest = async (endpoint: string, id: string, token: string) => {
     return json;
 };
 
-export { postRequest, getRequest, getPublicRequest, patchRequest, deleteRequest };
+export {
+    postRequest,
+    getRequest,
+    getPublicRequest,
+    patchRequest,
+    deleteRequest,
+    postProfileRequest,
+    updateAvatarRequest,
+};
