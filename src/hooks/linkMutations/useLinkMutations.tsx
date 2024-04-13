@@ -35,7 +35,7 @@ export const useLinkMutations = (linkId: string) => {
 
     const updateLinkMutation = useMutation({
         mutationFn: (data: { title: string; url: string }) => {
-            return updateLink(data.title, data.url, token!);
+            return updateLink(data.title, data.url, linkId, token!);
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['links'] });

@@ -5,6 +5,8 @@ import {
     patchRequest,
     deleteRequest,
     postProfileRequest,
+    getIdRequest,
+    patchProfileRequest,
 } from './ApiHelper';
 
 import {
@@ -15,7 +17,7 @@ import {
     GET_PUBLIC_PROFILE,
     CREATE_PROFILE,
     UPDATE_PROFILE,
-    UPDATE_AVATAR,
+    // UPDATE_AVATAR,
     GET_SINGLE_LINK,
     GET_ALL_LINKS,
     CREATE_LINK,
@@ -67,26 +69,26 @@ const createProfile = async (formData: FormData, token: string) => {
     return response;
 };
 
-const updateProfile = async (dateOfBirth: string, bio: string, token: string) => {
-    const data = {
-        dateOfBirth,
-        bio,
-    };
-    const response = await patchRequest(UPDATE_PROFILE, data, token);
+const updateProfile = async (
+    bio: string | undefined,
+    dateOfBirth: string | undefined,
+    avatar: File | null,
+    token: string
+) => {
+    const response = await patchProfileRequest(UPDATE_PROFILE, bio, dateOfBirth, avatar, token);
     return response;
 };
-
-const updateAvatar = async (avatar: string, token: string) => {
-    const data = {
-        avatar,
-    };
-    const response = await patchRequest(UPDATE_AVATAR, data, token);
-    return response;
-};
+// const updateAvatar = async (avatar: string, token: string) => {
+//     const data = {
+//         avatar,
+//     };
+//     const response = await patchRequest(UPDATE_AVATAR, data, token);
+//     return response;
+// };
 
 // LINK ENDPOINT_API SERVICES
 const getSingleLink = async (linkId: string, token: string) => {
-    const response = await getRequest(GET_SINGLE_LINK, token, linkId);
+    const response = await getIdRequest(GET_SINGLE_LINK, token, linkId);
     return response;
 };
 
@@ -104,12 +106,12 @@ const createLink = async (title: string, url: string, token: string) => {
     return response;
 };
 
-const updateLink = async (title: string, url: string, token: string) => {
+const updateLink = async (title: string, url: string, id: string, token: string) => {
     const data = {
         title,
         url,
     };
-    const response = await patchRequest(UPDATE_LINK, data, token);
+    const response = await patchRequest(`${UPDATE_LINK}${id}`, data, token);
     return response;
 };
 
@@ -126,7 +128,7 @@ export {
     getCompleteProfile,
     createProfile,
     updateProfile,
-    updateAvatar,
+    // updateAvatar,
     getSingleLink,
     getAllLinks,
     createLink,

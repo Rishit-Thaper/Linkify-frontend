@@ -40,6 +40,59 @@ const postProfileRequest = async (endpoint: string, formData: FormData, token?: 
     return json;
 };
 
+const patchProfileRequest = async (
+    endpoint: string,
+    bio: string | undefined,
+    dateOfBirth: string | undefined,
+    avatar: File | null,
+    token: string
+) => {
+    const headers: Record<string, string> = {
+        Authorization: `Bearer ${token}`,
+    };
+
+    let body: BodyInit;
+
+    if (avatar) {
+        const formDataWithAvatar = new FormData();
+        formDataWithAvatar.append('avatar', avatar);
+        if (bio !== undefined) {
+            formDataWithAvatar.append('bio', bio);
+        }
+        if (dateOfBirth !== undefined) {
+            formDataWithAvatar.append('dateOfBirth', dateOfBirth);
+        }
+
+        body = formDataWithAvatar;
+    } else {
+        const jsonBody: Record<string, string> = {};
+        if (bio !== undefined) {
+            jsonBody.bio = bio;
+        }
+        if (dateOfBirth !== undefined) {
+            jsonBody.dateOfBirth = dateOfBirth;
+        }
+
+        body = JSON.stringify(jsonBody);
+        headers['Content-Type'] = 'application/json';
+    }
+
+    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+        method: 'PATCH',
+        body,
+        headers,
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+
+    console.log(json);
+    return json;
+};
+
 const updateAvatarRequest = async (endpoint: string, formData: FormData, token?: string) => {
     console.log('APIHELPER', formData);
     const response = await fetch(API_DEV_BASE_URL + endpoint, {
@@ -60,7 +113,24 @@ const updateAvatarRequest = async (endpoint: string, formData: FormData, token?:
     return json;
 };
 
-const getRequest = async (endpoint: string, token: string, id?: string) => {
+const getRequest = async (endpoint: string, token: string) => {
+    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const json = await response.json();
+
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+
+    console.log(json);
+    return json;
+};
+const getIdRequest = async (endpoint: string, token: string, id: string) => {
     const response = await fetch(API_DEV_BASE_URL + endpoint + id, {
         method: 'GET',
         headers: {
@@ -138,6 +208,8 @@ export {
     getPublicRequest,
     patchRequest,
     deleteRequest,
+    patchProfileRequest,
+    getIdRequest,
     postProfileRequest,
     updateAvatarRequest,
 };

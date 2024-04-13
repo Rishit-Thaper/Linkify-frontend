@@ -1,8 +1,10 @@
 import AuthDetails from '../libs/AuthDetails';
 import logo from '../assets/linkify-low-1.png';
 import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
 const Header = () => {
     const { user } = AuthDetails();
+    const { logout } = useLogout();
     return (
         <>
             <div className="header">
@@ -13,6 +15,11 @@ const Header = () => {
                     <Link to={user ? '/profile' : '/auth'}>
                         <button>{user ? user.username : 'Get Started'}</button>
                     </Link>
+                    {user && (
+                        <button id="danger-button" onClick={logout}>
+                            Logout
+                        </button>
+                    )}
                 </div>
             </div>
         </>
