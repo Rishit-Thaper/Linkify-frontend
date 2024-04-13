@@ -49,49 +49,51 @@ const Form = ({ formType }: { formType: string }) => {
 
     return (
         <>
-            <form onSubmit={formType === LOGIN ? handleSubmit(onLogin) : handleSubmit(onRegister)}>
-                {formType === SIGNUP && (
-                    <>
-                        <input
-                            placeholder="Username"
-                            {...register('username', {
-                                required: 'Username is required',
-                                maxLength: 20,
-                            })}
-                        />
-                        <br />
-                        {formType === SIGNUP && errors.username && <span>{errors.username.message}</span>}
-                    </>
-                )}
-                <br />
-                <input
-                    placeholder="email"
-                    {...register('email', {
-                        required: 'Email is required',
-                        pattern: {
-                            value: /^[\w-]+(\.[\w-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/i,
-                            message: 'Invalid email address',
-                        },
-                    })}
-                />
-                <br />
-                {errors.email && <span>{errors.email.message}</span>}
-                <br />
-                <input
-                    placeholder="Password"
-                    {...register('password', {
-                        required: 'Password is required',
-                    })}
-                />
-                <br />
-                {errors.password && <span>{errors.password.message}</span>}
-                <br />
-                <input
-                    type="submit"
-                    disabled={isLoading || isPending}
-                    value={formType === SIGNUP ? 'Signup' : 'Login'}
-                />
-            </form>
+            <div className="form-div">
+                <form onSubmit={formType === LOGIN ? handleSubmit(onLogin) : handleSubmit(onRegister)}>
+                    {formType === SIGNUP && (
+                        <>
+                            <input
+                                placeholder="Username"
+                                {...register('username', {
+                                    required: 'Username is required',
+                                    maxLength: 20,
+                                })}
+                            />
+                            <br />
+                            {formType === SIGNUP && errors.username && <span>{errors.username.message}</span>}
+                        </>
+                    )}
+                    <br />
+                    <input
+                        placeholder="email"
+                        {...register('email', {
+                            required: 'Email is required',
+                            pattern: {
+                                value: /^[\w-]+(\.[\w-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/i,
+                                message: 'Invalid email address',
+                            },
+                        })}
+                    />
+                    <br />
+                    {errors.email && <span>{errors.email.message}</span>}
+                    <br />
+                    <input
+                        placeholder="Password"
+                        {...register('password', {
+                            required: 'Password is required',
+                        })}
+                    />
+                    <br />
+                    {errors.password && <span>{errors.password.message}</span>}
+                    <br />
+                    <input
+                        type="submit"
+                        disabled={isLoading || isPending}
+                        value={formType === SIGNUP ? 'Signup' : 'Login'}
+                    />
+                </form>
+            </div>
         </>
     );
 };

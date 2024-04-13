@@ -1,35 +1,109 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500&family=Poppins:wght@400;500&family=Work+Sans:wght@400;500&display=swap");
-@import "styles/breakpoints";
-@import "styles/mixins.scss";
-@import "styles/colors";
-// SCSS code for input file button
-.profile-image-upload {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    cursor: pointer;
-  
-    .input-file {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500&family=Poppins:wght@400;500&family=Work+Sans:wght@400;500&display=swap');
+@import 'styles/breakpoints';
+@import 'styles/mixins.scss';
+@import 'styles/colors';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Poppins;
+    height: 90vh;
+    width: 100%;
+    background-image: url('../src/assets/bg.png');
+    background-size: cover;
+    background-position: center;
+    color: $color-2;
+}
+
+.header {
+    background-color: $color-3;
+    color: $color-2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 11px 20px 0px #00000066;
+    &__left {
+        img {
+            width: 40%;
+        }
     }
-  
-    .button-text {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s;
+    &__right {
+        button {
+            @include buttonStyle($color-1, $color-2, $color-1);
+            font-size: 1.2rem;
+            margin-top: 0;
+            font-weight: 600;
+            font-family: Poppins;
+            padding: 0.5rem 1rem;
+            margin-right: 1.5rem;
+        }
     }
-  
-    .button-text:hover {
-      background-color: #0056b3;
+}
+
+.main-div {
+    @include commonStyle();
+    text-align: center;
+    h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
     }
-  }
+    p {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: $color-5;
+    }
+    button {
+        @include buttonStyle($color-2, $color-1, $color-2);
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+.auth-div {
+    @include commonStyle();
+    .auth {
+        margin-top: 1rem;
+        padding: 2rem;
+        button {
+            @include buttonStyle($color-3, $color-2, $color-3);
+            width: 48%;
+            margin: 0 0 1rem 0;
+            &:hover {
+                border-color: $color-2;
+                background-color: $color-3;
+                color: $color-2;
+            }
+            &:active{
+              border: 1px solid $color-2;
+            }
+        }
+        #signup {
+            margin-right: 1rem;
+        }
+    }
+}
+.form-div {
+    form {
+        input {
+            font-family: Poppins;
+            background: none;
+            padding: 0.5rem;
+            width: 100%;
+            color: $color-2;
+            backdrop-filter: blur(14px);
+            border: 1px solid $color-5;
+            border-radius: 3px;
+        }
+        input[type='submit'] {
+            @include buttonStyle($color-3, $color-2, $color-3);
+            margin-top: 0;
+        }
+    }
+}

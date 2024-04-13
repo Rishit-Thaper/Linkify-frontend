@@ -19,10 +19,17 @@ const Auth = () => {
     const { state } = useAuthContext();
     console.log(state.user);
     return (
-        <div>
-            <button onClick={() => setFormType(SIGNUP)}>Register</button>
-            <button onClick={() => setFormType(LOGIN)}>Login</button>
-            <Form formType={formType} />
+        <div className="auth-div">
+            <h1>Connect with Linkify: Join or Log in</h1>
+            <div className="auth">
+                <button onClick={() => setFormType(SIGNUP)} id="signup">
+                    Sign up
+                </button>
+                <button onClick={() => setFormType(LOGIN)} id="login">
+                    Log in
+                </button>
+                <Form formType={formType} />
+            </div>
         </div>
     );
 };

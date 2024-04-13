@@ -1,13 +1,13 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useProfileMutations } from '../hooks/profileMutations/useProfileMutations';
-// import { toast } from 'react-toastify';
 import { Profile } from '../@types/global';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-
+import userPicture from '../assets/user.png';
 const ProfileForm = () => {
     const { createProfileQuery } = useProfileMutations();
+    const [selectedImage, setSelectedImage] = useState<string>();
     const navigate = useNavigate();
     const {
         register,
@@ -26,6 +26,13 @@ const ProfileForm = () => {
             console.log(error);
         }
     };
+
+    const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.files);
+        const imageUrl = URL.createObjectURL(e.target.files![0]);
+        setSelectedImage(imageUrl);
+    };
+
     useEffect(() => {
         if (createProfileQuery.isPending) {
             toast.loading('Creating Profile...');
@@ -42,6 +49,7 @@ const ProfileForm = () => {
     }
     return (
         <>
+            {selectedImage ? <img src={selectedImage} width={100} /> : <img src={userPicture} width={100} />}
             <form onSubmit={handleSubmit(createProfile)}>
                 <input
                     placeholder="Date of Birth"
@@ -68,6 +76,7 @@ const ProfileForm = () => {
                     {...register('avatar', {
                         required: 'Avatar is required',
                     })}
+                    onChange={handleImageSelect}
                 />
                 <br />
                 {errors.avatar && <span>{errors.avatar.message}</span>}
