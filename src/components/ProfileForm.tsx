@@ -117,7 +117,7 @@ const ProfileForm = () => {
     return (
         <>
             <div className="profile-div">
-                <h1>{profileData ? 'Update Profile' : 'Create Profile'}</h1>
+                <h1>Update Profile</h1>
                 <div className="image-container">
                     {selectedImage ? (
                         <img src={selectedImage} alt="Selected Image" />

@@ -11,6 +11,7 @@ export const useProfileMutations = () => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['profile'] });
+            queryClient.invalidateQueries({ queryKey: ['completeProfile'] });
         },
     });
     const updateProfileQuery = useMutation({
@@ -19,21 +20,12 @@ export const useProfileMutations = () => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['profile'] });
+            queryClient.invalidateQueries({ queryKey: ['completeProfile'] });
         },
     });
-
-    // const updateAvatarQuery = useMutation({
-    //     mutationFn: (avatar: string) => {
-    //         return updateAvatar(avatar, token!);
-    //     },
-    //     onSuccess: () => {
-    //         queryClient.invalidateQueries({ queryKey: ['profile'] });
-    //     },
-    // });
 
     return {
         createProfileQuery,
         updateProfileQuery,
-        // updateAvatarQuery,
     };
 };

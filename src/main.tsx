@@ -5,16 +5,19 @@ import App from './App.tsx';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContextProvider } from './contexts/AuthContext.tsx';
+import { LinkContextProvider } from './contexts/LinkContext.tsx';
 import { Slide, ToastContainer } from 'react-toastify';
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <AuthContextProvider>
         <QueryClientProvider client={queryClient}>
-            <React.StrictMode>
-                <App />
-                <ToastContainer position="top-right" theme="dark" transition={Slide} />
-            </React.StrictMode>
+            <LinkContextProvider>
+                <React.StrictMode>
+                    <App />
+                    <ToastContainer position="top-right" theme="dark" transition={Slide} />
+                </React.StrictMode>
+            </LinkContextProvider>
         </QueryClientProvider>
     </AuthContextProvider>
 );

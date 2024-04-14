@@ -186,7 +186,7 @@ const patchRequest = async <T>(endpoint: string, data: T, token: string) => {
 
 const deleteRequest = async (endpoint: string, id: string, token: string) => {
     const response = await fetch(API_DEV_BASE_URL + endpoint + id, {
-        method: 'DELETE_LINK',
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

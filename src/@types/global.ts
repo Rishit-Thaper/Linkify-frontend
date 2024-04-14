@@ -21,6 +21,18 @@ export interface Profile {
     _id: string;
 }
 export interface Link {
+    _id: string;
     url: string;
     title: string;
+}
+
+export interface CompleteProfile {
+    bio: string;
+    avatar: string;
+    dateOfBirth: string;
+    createdAt: string;
+    updatedAt: string;
+    _id: string;
+    users: User[];
+    links: Link[];
 }

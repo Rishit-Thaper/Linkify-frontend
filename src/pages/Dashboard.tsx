@@ -1,13 +1,14 @@
-import { useLogout } from '../hooks/useLogout';
+import AllLinks from '../components/AllLinks';
+import Preview from '../components/Preview';
 import { AuthChecker } from '../libs/AuthChecker';
 
 const Home = () => {
-    const { logout } = useLogout();
     AuthChecker();
     return (
         <div>
             This is homepage
-            <button onClick={() => logout()}>Logout</button>
+            <Preview />
+            <AllLinks />
         </div>
     );
 };
