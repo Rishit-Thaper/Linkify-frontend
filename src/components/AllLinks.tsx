@@ -5,9 +5,11 @@ import AuthDetails from '../libs/AuthDetails';
 import { Link } from '../@types/global';
 import React from 'react';
 import { toast } from 'react-toastify';
+import { useLinkContext } from '../hooks/useLinkContext';
 
 const AllLinks = () => {
     const { deleteLinkMutation } = useLinkMutations();
+    const { setSelectedLinkId } = useLinkContext();
     const { token } = AuthDetails();
     const { data } = useQuery({
         queryKey: ['links'],
@@ -29,6 +31,7 @@ const AllLinks = () => {
                         <p>{link.title}</p>
                         <p>{link.url}</p>
                         <button onClick={() => deleteLink(link._id)}>Delete</button>
+                        <button onClick={() => setSelectedLinkId(link._id)}>Update</button>
                     </React.Fragment>
                 ))
             ) : (

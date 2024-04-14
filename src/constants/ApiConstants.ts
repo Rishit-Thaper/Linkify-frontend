@@ -7,7 +7,7 @@ const LOGIN_USER = '/api/v1/users/login';
 //  profile endpoints
 const GET_PROFILE = '/api/v1/profile/getProfile';
 const GET_COMPLETE_PROFILE = '/api/v1/profile/getCompleteProfile';
-const GET_PUBLIC_PROFILE = '/api/v1/profile/publicProfile/';
+const GET_PUBLIC_PROFILE = '/api/v1/profile/getPublicProfile/';
 const CREATE_PROFILE = '/api/v1/profile/createProfile';
 const UPDATE_PROFILE = '/api/v1/profile/updateProfile';
 const UPDATE_AVATAR = '/api/v1/profile/updateAvatar';

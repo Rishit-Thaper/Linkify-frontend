@@ -57,6 +57,7 @@ const Form = ({ formType }: { formType: string }) => {
                                 placeholder="Username"
                                 {...register('username', {
                                     required: 'Username is required',
+
                                     maxLength: 20,
                                 })}
                             />
@@ -80,6 +81,7 @@ const Form = ({ formType }: { formType: string }) => {
                     <br />
                     <input
                         placeholder="Password"
+                        type="password"
                         {...register('password', {
                             required: 'Password is required',
                         })}

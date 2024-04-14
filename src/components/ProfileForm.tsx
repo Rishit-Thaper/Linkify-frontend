@@ -50,8 +50,11 @@ const ProfileForm = () => {
             formDataWithFile.append('avatar', selectedImageFile as File);
 
             await createProfileQuery.mutateAsync(formDataWithFile);
+            toast.success('Profile Created Successfully');
+            navigate('/');
         } catch (error) {
             console.error(error);
+            toast.error('Profile Creation Failed');
         }
     };
 
@@ -62,8 +65,11 @@ const ProfileForm = () => {
             const avatar = selectedImageFile;
 
             await updateProfileQuery.mutateAsync({ bio, dateOfBirth, avatar });
+            toast.success('Profile Updated Successfully');
+            navigate('/');
         } catch (error) {
             console.error('Error updating profile:', error);
+            toast.error('Profile Updation Failed');
         }
     };
     const profileData: Profile = getLocalData(PROFILE_KEY)!;
@@ -90,30 +96,11 @@ const ProfileForm = () => {
     useEffect(() => {
         if (createProfileQuery.isPending || updateProfileQuery.isPending) {
             toast.loading(createProfileQuery.isPending ? 'Creating Profile...' : 'Updating Profile...');
-        } else if (createProfileQuery.isSuccess || updateProfileQuery.isSuccess) {
+        } else {
             toast.dismiss();
-            toast.success(
-                createProfileQuery.isSuccess ? 'Profile Created Successfully' : 'Profile Updated Successfully'
-            );
-        } else if (createProfileQuery.isError || updateProfileQuery.isError) {
-            toast.dismiss();
-            toast.error(
-                createProfileQuery.isError ? createProfileQuery.error?.message : updateProfileQuery.error?.message
-            );
         }
-    }, [
-        createProfileQuery.isSuccess,
-        updateProfileQuery.isPending,
-        createProfileQuery.isPending,
-        updateProfileQuery.isSuccess,
-        createProfileQuery.isError,
-        updateProfileQuery.isError,
-        createProfileQuery.error?.message,
-        updateProfileQuery.error?.message,
-    ]);
-    if (createProfileQuery.isSuccess || updateProfileQuery.isSuccess) {
-        navigate('/');
-    }
+    }, [updateProfileQuery.isPending, createProfileQuery.isPending]);
+
     return (
         <>
             <div className="profile-div">
