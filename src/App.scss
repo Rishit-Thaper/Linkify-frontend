@@ -11,6 +11,7 @@
 body {
     font-family: Poppins;
     height: 90vh;
+    text-decoration: none;
     width: 100%;
     background-image: url('../src/assets/bg.png');
     background-size: cover;
@@ -133,7 +134,7 @@ body {
         input {
             margin-top: 1rem;
         }
-        textarea{
+        textarea {
             margin-top: 1rem;
         }
         label {
@@ -146,6 +147,71 @@ body {
             width: 100%;
             @include buttonStyle($color-3, $color-2, $color-3);
             margin-top: 0;
+        }
+    }
+}
+
+.dashboard {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-evenly;
+    gap: 2rem;
+    button {
+        @include buttonStyle($color-3, $color-2, $color-3);
+        margin-top: 0;
+        padding: 0.5rem 1rem;
+    }
+    .dashboard-left {
+        border: 2px solid white;
+    }
+    .dashboard-center {
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: $color-3;
+        min-height: 560px;
+        overflow-y: auto;
+        .link {
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            background-color: $color-1;
+            a {
+                color: $color-2;
+                text-decoration: none;
+            }
+            button {
+                margin-left: 1rem;
+            }
+            .danger {
+                @include buttonStyle($danger-color, $color-2, $danger-color);
+                margin-top: 0;
+            }
+        }
+    }
+    .dashboard-right {
+        width: 300px;
+        min-height: 560px;
+        max-height: 560px;
+        background-color: $color-2;
+        padding: 1rem;
+        text-align: center;
+        color: $color-1;
+        border-radius: 10px;
+        img {
+            border-radius: 50%;
+        }
+        .bottom-logo {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        button {
+            width: 100%;
+            background-color: $color-1;
+            color: $color-2;
+            font-weight: 600;
+            margin-top: 1rem;
         }
     }
 }

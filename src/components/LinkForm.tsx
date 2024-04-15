@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from '../@types/global';
+import { LinkType } from '../@types/global';
 import { useLinkMutations } from '../hooks/linkMutations/useLinkMutations';
 import { useLinkContext } from '../hooks/useLinkContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -26,9 +26,9 @@ const LinkForm = () => {
         setValue,
         reset,
         formState: { errors },
-    } = useForm<Link>();
+    } = useForm<LinkType>();
 
-    const createLink: SubmitHandler<Link> = async (formData) => {
+    const createLink: SubmitHandler<LinkType> = async (formData) => {
         try {
             await createLinkMutation.mutateAsync(formData);
             toast.success('Link created successfully');
@@ -38,7 +38,7 @@ const LinkForm = () => {
         }
     };
 
-    const updateLink: SubmitHandler<Link> = async (formData) => {
+    const updateLink: SubmitHandler<LinkType> = async (formData) => {
         try {
             await updateLinkMutation.mutateAsync({ link: formData, linkId: selectedLinkId! });
             toast.success('Link updated successfully');

@@ -1,48 +1,68 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCompleteProfile } from '../services/ApiServices';
 import AuthDetails from '../libs/AuthDetails';
-import { CompleteProfile, Link } from '../@types/global';
+import { CompleteProfile, LinkType } from '../@types/global';
 import userPicture from '../assets/user.png';
-
-import React from 'react';
+import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
+import linkifyLogo from '../assets/linkify-mid-black.png';
 const Preview = () => {
     const { token } = AuthDetails();
     const { data } = useQuery({
         queryKey: ['completeProfile'],
         queryFn: () => getCompleteProfile(token!),
     });
+    const { user } = AuthDetails();
     const completeProfile: CompleteProfile = data?.data[0];
     console.log('complete profile', completeProfile);
     console.log(completeProfile?.bio);
     return (
         <>
-            {completeProfile && (
-                <div>
-                    {completeProfile.avatar ? (
-                        <img src={completeProfile?.avatar} width={100} alt="Avatar" />
-                    ) : (
-                        <img src={userPicture} width={100} alt="Avatar" />
-                    )}
-                    <p>{completeProfile.bio}</p>
-                    {completeProfile.users && (
-                        <>
-                            <p>{completeProfile.users[0].username}</p>
-                            <p>{completeProfile.users[0].email}</p>
-                        </>
-                    )}
-                    <p>{completeProfile.dateOfBirth}</p>
-                    {completeProfile.links && completeProfile.links.length > 0 ? (
-                        completeProfile.links.map((link: Link, index: number) => (
-                            <React.Fragment key={index}>
-                                <p>{link.title}</p>
-                                <p>{link.url}</p>
-                            </React.Fragment>
-                        ))
-                    ) : (
-                        <p>No links found!!</p>
-                    )}
-                </div>
-            )}
+            <div>
+                {completeProfile?.avatar ? (
+                    <img src={completeProfile?.avatar} width={100} alt="Avatar" />
+                ) : (
+                    <img src={userPicture} width={100} alt="Avatar" />
+                )}
+                {user && (
+                    <>
+                        <p>@{user.username}</p>
+                        <p>
+                            {user.email}{' '}
+                            {completeProfile && (
+                                <span>
+                                    {'| '}🎂 {format(new Date(completeProfile?.dateOfBirth), 'MMMM d, yyyy')}
+                                </span>
+                            )}
+                        </p>
+                    </>
+                )}
+
+                {completeProfile ? (
+                    <>
+                        <span>{completeProfile?.bio}</span>
+                        {completeProfile?.links && completeProfile?.links.length > 0 ? (
+                            <div className="links-div">
+                                {completeProfile?.links.map((link: LinkType, index: number) => (
+                                    <div className="link" key={index}>
+                                        <Link
+                                            to={link.url.startsWith('http') ? link.url : `https://${link.url}`}
+                                            target="_blank"
+                                        >
+                                            <button>{link.title}</button>
+                                        </Link>{' '}
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p>No links found!!</p>
+                        )}
+                    </>
+                ) : (
+                    <p>Create a profile first</p>
+                )}
+            </div>
+            <img className="bottom-logo" src={linkifyLogo} alt="" width={120} />
         </>
     );
 };

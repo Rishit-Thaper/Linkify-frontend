@@ -1,7 +1,7 @@
 import { createLink, updateLink, deleteLink } from '../../services/ApiServices';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import AuthDetails from '../../libs/AuthDetails';
-import { Link } from '../../@types/global';
+import { LinkType } from '../../@types/global';
 
 export const useLinkMutations = () => {
     const queryClient = useQueryClient();
@@ -18,7 +18,7 @@ export const useLinkMutations = () => {
     });
 
     const updateLinkMutation = useMutation({
-        mutationFn: (data: { link: Link; linkId: string }) => {
+        mutationFn: (data: { link: LinkType; linkId: string }) => {
             const { link, linkId } = data;
             return updateLink(link.title, link.url, linkId, token!);
         },

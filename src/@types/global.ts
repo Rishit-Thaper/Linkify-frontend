@@ -20,7 +20,7 @@ export interface Profile {
     updatedAt: string;
     _id: string;
 }
-export interface Link {
+export interface LinkType {
     _id: string;
     url: string;
     title: string;
@@ -34,5 +34,5 @@ export interface CompleteProfile {
     updatedAt: string;
     _id: string;
     users: User[];
-    links: Link[];
+    links: LinkType[];
 }

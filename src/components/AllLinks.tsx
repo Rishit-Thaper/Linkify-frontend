@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useLinkMutations } from '../hooks/linkMutations/useLinkMutations';
 import { getAllLinks } from '../services/ApiServices';
 import AuthDetails from '../libs/AuthDetails';
-import { Link } from '../@types/global';
+import { LinkType } from '../@types/global';
 import React from 'react';
 import { toast } from 'react-toastify';
 import { useLinkContext } from '../hooks/useLinkContext';
+import { Link } from 'react-router-dom';
 
 const AllLinks = () => {
     const { deleteLinkMutation } = useLinkMutations();
@@ -15,7 +16,7 @@ const AllLinks = () => {
         queryKey: ['links'],
         queryFn: () => getAllLinks(token!),
     });
-    const linkData: Link[] = data?.data;
+    const linkData: LinkType[] = data?.data;
     console.log(linkData);
     const deleteLink = (linkId: string) => {
         deleteLinkMutation.mutateAsync(linkId);
@@ -26,12 +27,17 @@ const AllLinks = () => {
     return (
         <div>
             {linkData && linkData.length > 0 ? (
-                linkData.map((link: Link, index: number) => (
+                linkData.map((link: LinkType, index: number) => (
                     <React.Fragment key={index}>
-                        <p>{link.title}</p>
-                        <p>{link.url}</p>
-                        <button onClick={() => deleteLink(link._id)}>Delete</button>
-                        <button onClick={() => setSelectedLinkId(link._id)}>Update</button>
+                        <div className="link" key={index}>
+                            <Link to={link.url.startsWith('http') ? link.url : `https://${link.url}`} target="_blank">
+                                <span>{link.title}</span>
+                            </Link>{' '}
+                            <button className="danger" onClick={() => deleteLink(link._id)}>
+                                Delete
+                            </button>
+                            <button onClick={() => setSelectedLinkId(link._id)}>Update</button>
+                        </div>
                     </React.Fragment>
                 ))
             ) : (
