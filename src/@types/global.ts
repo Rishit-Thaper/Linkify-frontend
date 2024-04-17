@@ -37,3 +37,13 @@ export interface CompleteProfile {
     users: User[];
     links: LinkType[];
 }
+
+export interface CompletePublicProfile {
+    email: string;
+    username: string;
+    createdAt: string;
+    updatedAt: string;
+    _id: string;
+    profile: Profile[];
+    links: LinkType[];
+}

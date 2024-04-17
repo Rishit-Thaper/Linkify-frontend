@@ -12,6 +12,7 @@ export const useProfileMutations = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['profile'] });
             queryClient.invalidateQueries({ queryKey: ['completeProfile'] });
+            queryClient.invalidateQueries({ queryKey: ['publicProfile'] });
         },
     });
     const updateProfileQuery = useMutation({
@@ -21,6 +22,7 @@ export const useProfileMutations = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['profile'] });
             queryClient.invalidateQueries({ queryKey: ['completeProfile'] });
+            queryClient.invalidateQueries({ queryKey: ['publicProfile'] });
         },
     });
 

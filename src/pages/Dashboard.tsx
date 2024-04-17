@@ -1,10 +1,19 @@
 import AllLinks from '../components/AllLinks';
 import LinkForm from '../components/LinkForm';
 import Preview from '../components/Preview';
+import ShareProfile from '../components/ShareProfile';
 import { AuthChecker } from '../libs/AuthChecker';
 import AuthDetails from '../libs/AuthDetails';
+import QRCodeComponent from '../components/QRCode';
 
 const Home = () => {
+    const handleDownloadQR = () => {
+        const qrComponent = document.querySelector('.qr-div');
+        if (qrComponent) {
+            qrComponent.querySelector('div')?.querySelector('button')?.click();
+        }
+    };
+
     const { user } = AuthDetails();
     AuthChecker();
     return (
@@ -17,12 +26,11 @@ const Home = () => {
                     <LinkForm />
                 </div>
                 <div className="share-profile">
-                    <input type="text" value={`localhost:5713/${user?.username}`} disabled />
-                    <br />
-                    <button>Share Profile</button>
+                    <ShareProfile />
                 </div>
                 <div className="qr-div">
-                    <button>Download and Share QR Code</button>
+                    <QRCodeComponent />
+                    <button onClick={handleDownloadQR}>Download and Share QR Code</button>
                 </div>
                 <button>Share Feedback</button>
             </div>

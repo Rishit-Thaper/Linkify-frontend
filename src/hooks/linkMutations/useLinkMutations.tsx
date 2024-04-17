@@ -14,6 +14,7 @@ export const useLinkMutations = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['links'] });
             queryClient.invalidateQueries({ queryKey: ['completeProfile'] });
+            queryClient.invalidateQueries({ queryKey: ['publicProfile'] });
         },
     });
 
@@ -25,6 +26,7 @@ export const useLinkMutations = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['links'] });
             queryClient.invalidateQueries({ queryKey: ['completeProfile'] });
+            queryClient.invalidateQueries({ queryKey: ['publicProfile'] });
         },
     });
 
@@ -35,6 +37,7 @@ export const useLinkMutations = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['links'] });
             queryClient.invalidateQueries({ queryKey: ['completeProfile'] });
+            queryClient.invalidateQueries({ queryKey: ['publicProfile'] });
         },
     });
 
