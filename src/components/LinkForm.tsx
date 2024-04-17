@@ -58,10 +58,10 @@ const LinkForm = () => {
 
     return (
         <div>
-            <p>LinkForm</p>
             <form onSubmit={handleSubmit(selectedLinkId ? updateLink : createLink)}>
                 <input
                     type="text"
+                    placeholder="Add your Title here"
                     {...register('title', {
                         required: !selectedLinkId ? 'Title is required' : false,
                     })}
@@ -70,6 +70,7 @@ const LinkForm = () => {
                 {errors.title && <span>{errors.title.message}</span>}
                 <input
                     type="text"
+                    placeholder="Add your URL here"
                     {...register('url', {
                         required: !selectedLinkId ? 'URL is required' : false,
                         pattern: {

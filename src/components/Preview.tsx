@@ -19,15 +19,19 @@ const Preview = () => {
     return (
         <>
             <div>
-                {completeProfile?.avatar ? (
-                    <img src={completeProfile?.avatar} width={100} alt="Avatar" />
-                ) : (
-                    <img src={userPicture} width={100} alt="Avatar" />
-                )}
+                <div className="image-container">
+                    {completeProfile?.avatar ? (
+                        <img src={completeProfile?.avatar} width={100} alt="Avatar" />
+                    ) : (
+                        <img src={userPicture} width={100} alt="Avatar" />
+                    )}
+                </div>
                 {user && (
                     <>
-                        <p>@{user.username}</p>
-                        <p>
+                        <p id="username">@{user.username}</p>
+                        <span id="bio">{completeProfile?.bio}</span>
+
+                        <p id="email">
                             {user.email}{' '}
                             {completeProfile && (
                                 <span>
@@ -40,19 +44,20 @@ const Preview = () => {
 
                 {completeProfile ? (
                     <>
-                        <span>{completeProfile?.bio}</span>
                         {completeProfile?.links && completeProfile?.links.length > 0 ? (
                             <div className="links-div">
-                                {completeProfile?.links.map((link: LinkType, index: number) => (
-                                    <div className="link" key={index}>
-                                        <Link
-                                            to={link.url.startsWith('http') ? link.url : `https://${link.url}`}
-                                            target="_blank"
-                                        >
-                                            <button>{link.title}</button>
-                                        </Link>{' '}
-                                    </div>
-                                ))}
+                                {completeProfile?.links
+                                    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+                                    .map((link: LinkType, index: number) => (
+                                        <div className="link" key={index}>
+                                            <Link
+                                                to={link.url.startsWith('http') ? link.url : `https://${link.url}`}
+                                                target="_blank"
+                                            >
+                                                <button>{link.title}</button>
+                                            </Link>{' '}
+                                        </div>
+                                    ))}
                             </div>
                         ) : (
                             <p>No links found!!</p>

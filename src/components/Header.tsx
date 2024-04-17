@@ -5,6 +5,9 @@ import { useLogout } from '../hooks/useLogout';
 const Header = () => {
     const { user } = AuthDetails();
     const { logout } = useLogout();
+    const handleClick = () => {
+        logout();
+    };
     return (
         <>
             <div className="header">
@@ -16,7 +19,7 @@ const Header = () => {
                         <button>{user ? user.username : 'Get Started'}</button>
                     </Link>
                     {user && (
-                        <button id="danger-button" onClick={logout}>
+                        <button id="danger-button" onClick={handleClick}>
                             Logout
                         </button>
                     )}

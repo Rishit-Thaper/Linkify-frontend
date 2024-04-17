@@ -154,64 +154,208 @@ body {
 .dashboard {
     display: flex;
     margin-bottom: 2rem;
-    justify-content: space-evenly;
-    gap: 2rem;
+    justify-content: space-around;
+    gap: 1rem;
+    max-height: 560px;
     button {
         @include buttonStyle($color-3, $color-2, $color-3);
         margin-top: 0;
         padding: 0.5rem 1rem;
     }
     .dashboard-left {
-        border: 2px solid white;
+        min-width: 350px;
+        max-width: 350px;
+        max-height: 560px;
+        min-height: 560px;
+        .welcome {
+            padding: 1rem 1rem;
+            border-radius: 5px;
+            background-color: $color-3;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+        .link-form {
+            background-color: $color-3;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+
+            input {
+                border: none;
+                color: $color-2;
+                font-family: Poppins;
+                border-radius: 5px;
+                background: $color-4;
+                outline: none;
+                width: 100%;
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            button {
+                width: 100%;
+                @include buttonStyle($color-3, $color-2, $color-1);
+                margin-top: 0;
+                padding: 0.5rem 1rem;
+            }
+        }
+        .share-profile {
+            background-color: $color-3;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            input {
+                border: none;
+                color: $color-2;
+                font-family: Poppins;
+                border-radius: 5px;
+                background: $color-4;
+                outline: none;
+                width: 100%;
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            button {
+                width: 100%;
+                @include buttonStyle($color-3, $color-2, $color-1);
+                margin-top: 0;
+                padding: 0.5rem 1rem;
+            }
+        }
+        .qr-div {
+            margin-bottom: 1rem;
+            button {
+                width: 100%;
+            }
+        }
+        button {
+            width: 100%;
+        }
     }
     .dashboard-center {
         padding: 1rem;
         border-radius: 10px;
         background-color: $color-3;
         min-height: 560px;
-        overflow-y: auto;
+        overflow-y: scroll;
+        min-width: 350px;
+        max-height: 560px;
+        padding-right: 1rem;
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: $color-4;
+            border-radius: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-3;
+            border-radius: 5px;
+        }
         .link {
-            padding: 0.5rem 1rem;
+            padding: 0.8rem 1rem;
             margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-radius: 5px;
             background-color: $color-1;
             a {
                 color: $color-2;
+                font-weight: 600;
                 text-decoration: none;
             }
             button {
                 margin-left: 1rem;
             }
-            .danger {
-                @include buttonStyle($danger-color, $color-2, $danger-color);
-                margin-top: 0;
-            }
+        }
+
+        .editor-buttons {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .editor-buttons > *:not(:last-child) {
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .danger {
+            color: $danger-color;
+            cursor: pointer;
         }
     }
     .dashboard-right {
-        width: 300px;
-        min-height: 560px;
+        min-width: 350px;
+        max-width: 350px;
         max-height: 560px;
-        background-color: $color-2;
+        min-height: 560px;
+        background-image: url('../src/assets/profile-bg.png');
+        background-size: cover;
+        background-position: center;
         padding: 1rem;
         text-align: center;
         color: $color-1;
+        position: relative;
         border-radius: 10px;
+
         img {
             border-radius: 50%;
         }
         .bottom-logo {
             position: absolute;
             bottom: 0;
+            margin-bottom: 0.5rem;
             left: 50%;
             transform: translateX(-50%);
+            width: 40%;
+        }
+        #username {
+            font-weight: 600;
+        }
+        #email {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+        #bio {
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+        .image-container {
+            margin: 0 auto;
+            margin-bottom: 1rem;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
         }
         button {
             width: 100%;
-            background-color: $color-1;
+            background-color: $color-4;
             color: $color-2;
             font-weight: 600;
-            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
+    }
+}
+
+.links-div {
+    margin-top: 1rem;
+    max-height: 275px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    padding-right: 10px;
+    &::-webkit-scrollbar {
+        width: 2px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: $color-2;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #f1f1f1;
+        border-radius: 5px;
     }
 }

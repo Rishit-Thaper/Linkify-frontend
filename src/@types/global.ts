@@ -21,6 +21,7 @@ export interface Profile {
     _id: string;
 }
 export interface LinkType {
+    updatedAt: string | number | Date;
     _id: string;
     url: string;
     title: string;
