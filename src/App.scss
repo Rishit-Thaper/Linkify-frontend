@@ -102,10 +102,26 @@ body {
         margin-top: 1.5rem;
         padding: 0.6rem 1rem;
     }
+    @include sm {
+        width: 300px;
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        button {
+            font-size: 1rem;
+            padding: 0.5rem 0.8rem;
+        }
+    
+    }
 }
+
 
 .auth-div {
     @include commonStyle();
+    text-align: center; // Align text to center
     .auth {
         margin-top: 1rem;
         padding: 2rem;
@@ -124,6 +140,18 @@ body {
         }
         #signup {
             margin-right: 1rem;
+        }
+    }
+
+    @include sm {
+        margin-top: 5rem;
+        text-align: center;
+        width: 350px;
+        .auth {
+            padding: 1rem;
+            button {
+                width: 100%;
+            }
         }
     }
 }
@@ -267,7 +295,7 @@ body {
             min-width: 320px;
             max-width: 320px;
         }
-        @include sm{
+        @include sm {
             min-height: 520px;
         }
     }
