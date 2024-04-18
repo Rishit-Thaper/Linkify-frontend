@@ -1,7 +1,6 @@
-import { API_DEV_BASE_URL } from '../constants/ApiConstants';
+import { API_PROD_BASE_URL } from '../constants/ApiConstants';
 const postRequest = async <T>(endpoint: string, data: T, token?: string) => {
-    console.log('APIHELPER', data);
-    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -10,19 +9,16 @@ const postRequest = async <T>(endpoint: string, data: T, token?: string) => {
         },
     });
     const json = await response.json();
-    console.log(json);
 
     if (!response.ok) {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 
 const postProfileRequest = async (endpoint: string, formData: FormData, token?: string) => {
-    console.log('APIHELPER', formData);
-    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'POST',
         body: formData,
         headers: {
@@ -30,13 +26,11 @@ const postProfileRequest = async (endpoint: string, formData: FormData, token?: 
         },
     });
     const json = await response.json();
-    console.log(json);
 
     if (!response.ok) {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 
@@ -77,7 +71,7 @@ const patchProfileRequest = async (
         headers['Content-Type'] = 'application/json';
     }
 
-    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'PATCH',
         body,
         headers,
@@ -89,13 +83,12 @@ const patchProfileRequest = async (
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 
 const updateAvatarRequest = async (endpoint: string, formData: FormData, token?: string) => {
     console.log('APIHELPER', formData);
-    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'PATCH',
         body: formData,
         headers: {
@@ -103,18 +96,16 @@ const updateAvatarRequest = async (endpoint: string, formData: FormData, token?:
         },
     });
     const json = await response.json();
-    console.log(json);
 
     if (!response.ok) {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 
 const getRequest = async (endpoint: string, token: string) => {
-    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -127,11 +118,10 @@ const getRequest = async (endpoint: string, token: string) => {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 const getIdRequest = async (endpoint: string, token: string, id: string) => {
-    const response = await fetch(API_DEV_BASE_URL + endpoint + id, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint + id, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -144,12 +134,11 @@ const getIdRequest = async (endpoint: string, token: string, id: string) => {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 
 const getPublicRequest = async (endpoint: string) => {
-    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -161,12 +150,11 @@ const getPublicRequest = async (endpoint: string) => {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 
 const patchRequest = async <T>(endpoint: string, data: T, token: string) => {
-    const response = await fetch(API_DEV_BASE_URL + endpoint, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'PATCH',
         body: JSON.stringify(data),
         headers: {
@@ -180,12 +168,11 @@ const patchRequest = async <T>(endpoint: string, data: T, token: string) => {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 
 const deleteRequest = async (endpoint: string, id: string, token: string) => {
-    const response = await fetch(API_DEV_BASE_URL + endpoint + id, {
+    const response = await fetch(API_PROD_BASE_URL + endpoint + id, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -198,7 +185,6 @@ const deleteRequest = async (endpoint: string, id: string, token: string) => {
         throw new Error(json.message);
     }
 
-    console.log(json);
     return json;
 };
 

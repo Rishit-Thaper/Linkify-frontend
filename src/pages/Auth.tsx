@@ -3,7 +3,6 @@ import Form from '../components/Form';
 import { SIGNUP, LOGIN } from '../constants/AppConstants';
 import AuthDetails from '../libs/AuthDetails';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../hooks/useAuthContext';
 const Auth = () => {
     const { isAuthenticated } = AuthDetails();
 
@@ -16,8 +15,6 @@ const Auth = () => {
     }, [isAuthenticated, navigate]);
 
     const [formType, setFormType] = useState<string>(SIGNUP);
-    const { state } = useAuthContext();
-    console.log(state.user);
     return (
         <div className="auth-div">
             <h1>Connect with Linkify: Join or Log in</h1>

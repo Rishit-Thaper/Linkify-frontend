@@ -14,8 +14,6 @@ interface FormInput {
 const Form = ({ formType }: { formType: string }) => {
     const { login, isLoading, error, isSuccess } = useLogin();
     const { signup, isLoading: isPending, error: err, isSuccess: success } = useSignup();
-    console.log('SUCCESS', success);
-    console.log('SUCCESS', isSuccess);
 
     useEffect(() => {
         if (isLoading || isPending) {
@@ -30,8 +28,7 @@ const Form = ({ formType }: { formType: string }) => {
             }
         }
     }, [isLoading, isPending, isSuccess, success, error, err]);
-    console.log(isPending);
-    console.log(err);
+
     const {
         register,
         handleSubmit,
@@ -39,11 +36,9 @@ const Form = ({ formType }: { formType: string }) => {
     } = useForm<FormInput>();
 
     const onRegister: SubmitHandler<FormInput> = (data: FormInput) => {
-        console.log('Register', data);
         signup(data.username, data.email, data.password);
     };
     const onLogin: SubmitHandler<FormInput> = (data: FormInput) => {
-        console.log('Login', data);
         login(data.email, data.password);
     };
 

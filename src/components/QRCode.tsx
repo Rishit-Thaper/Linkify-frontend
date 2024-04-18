@@ -9,11 +9,11 @@ const QRCodeComponent = () => {
     const { user } = AuthDetails();
     const profileData: Profile | null = getLocalData(PROFILE_KEY);
     const profileURL: string = `localhost:5173/${user?.username}`;
-    const qrRef = useRef<HTMLDivElement>(null); // Add type assertion for qrRef
+    const qrRef = useRef<HTMLDivElement>(null);
 
     const downloadQR = () => {
-        const canvas = qrRef.current?.querySelector('canvas'); // Add null check
-        const url = canvas?.toDataURL('image/png'); // Add null check
+        const canvas = qrRef.current?.querySelector('canvas');
+        const url = canvas?.toDataURL('image/png');
         const a = document.createElement('a');
         a.href = url || '';
         a.download = `${user?.username}.png`;

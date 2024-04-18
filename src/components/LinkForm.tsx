@@ -16,10 +16,7 @@ const LinkForm = () => {
         queryFn: () => getSingleLink(selectedLinkId!, token!),
         enabled: !!selectedLinkId,
     });
-    console.log('selected link', data);
     const linkData = data?.data;
-    console.log(linkData);
-    console.log('Selected Link ID', selectedLinkId);
     const {
         register,
         handleSubmit,

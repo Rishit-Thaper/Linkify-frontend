@@ -18,7 +18,6 @@ const AllLinks = () => {
         queryFn: () => getAllLinks(token!),
     });
     const linkData: LinkType[] = data?.data;
-    console.log(linkData);
     const deleteLink = async (linkId: string) => {
         await deleteLinkMutation.mutateAsync(linkId);
         toast.success('Deleted');

@@ -8,7 +8,6 @@ export const useLogout = () => {
         dispatch({ type: 'LOGOUT' });
         localStorage.clear();
         navigate('/auth');
-        console.log('Logout');
     };
     return { logout };
 };

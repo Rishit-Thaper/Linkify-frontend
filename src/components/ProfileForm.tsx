@@ -54,7 +54,6 @@ const ProfileForm = () => {
             navigate('/');
         } catch (error) {
             console.error(error);
-            toast.error('Profile Creation Failed');
         }
     };
 

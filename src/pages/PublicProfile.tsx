@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import linkifyLogo from '../assets/linkify-mid-black.png';
 const PublicProfile = () => {
     const { username } = useParams();
-    console.log(username);
     const { data } = useQuery({
         queryKey: ['publicProfile'],
         queryFn: () => getPublicProfile(username!),
@@ -56,7 +55,7 @@ const PublicProfile = () => {
                 ) : (
                     <p>No Links found!!</p>
                 )}
-                <Link to="/home" target='_blank'>
+                <Link to="/home" target="_blank">
                     <img src={linkifyLogo} alt="Linkify Logo" className="bottom-logo" />
                 </Link>
             </div>

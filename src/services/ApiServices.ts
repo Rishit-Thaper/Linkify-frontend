@@ -33,7 +33,6 @@ const registerUser = async (username: string, email: string, password: string) =
         password,
     };
     const response = await postRequest(REGISTER_USER, data);
-    console.log(response);
     return response;
 };
 
@@ -43,14 +42,12 @@ const loginUser = async (email: string, password: string) => {
         password,
     };
     const response = await postRequest(LOGIN_USER, data);
-    console.log(response);
     return response;
 };
 
 // PROFILE ENDPOINT_API SERVICES
 const getProfile = async (token: string) => {
     const response = await getRequest(GET_PROFILE, token);
-    console.log(response);
     return response;
 };
 
@@ -78,13 +75,6 @@ const updateProfile = async (
     const response = await patchProfileRequest(UPDATE_PROFILE, bio, dateOfBirth, avatar, token);
     return response;
 };
-// const updateAvatar = async (avatar: string, token: string) => {
-//     const data = {
-//         avatar,
-//     };
-//     const response = await patchRequest(UPDATE_AVATAR, data, token);
-//     return response;
-// };
 
 // LINK ENDPOINT_API SERVICES
 const getSingleLink = async (linkId: string, token: string) => {
@@ -128,7 +118,6 @@ export {
     getCompleteProfile,
     createProfile,
     updateProfile,
-    // updateAvatar,
     getSingleLink,
     getAllLinks,
     createLink,

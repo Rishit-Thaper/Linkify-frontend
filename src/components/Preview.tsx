@@ -14,8 +14,6 @@ const Preview = () => {
     });
     const { user } = AuthDetails();
     const completeProfile: CompleteProfile = data?.data[0];
-    console.log('complete profile', completeProfile);
-    console.log(completeProfile?.bio);
     return (
         <>
             <div>
