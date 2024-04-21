@@ -19,7 +19,7 @@ const QRCodeComponent = () => {
         a.download = `${user?.username}.png`;
         a.click();
     };
-
+    const imageUrl = profileData?.avatar;
     return (
         <div ref={qrRef} style={{ display: ' none' }}>
             <QRCode
@@ -27,7 +27,7 @@ const QRCodeComponent = () => {
                 size={250}
                 qrStyle="dots"
                 enableCORS={true}
-                logoImage={profileData?.avatar}
+                logoImage={imageUrl}
                 logoHeight={40}
                 logoWidth={40}
                 logoOpacity={1}
