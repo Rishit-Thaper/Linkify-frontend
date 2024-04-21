@@ -146,7 +146,7 @@ body {
     @include sm {
         margin-top: 5rem;
         text-align: center;
-        width: 350px;
+        width: 22vw;
         .auth {
             padding: 1rem;
             button {
@@ -220,17 +220,17 @@ body {
     margin-bottom: 2rem;
     justify-content: space-around;
     gap: 1rem;
-    max-height: 560px;
+    max-height: 75vh;
     button {
         @include buttonStyle($color-3, $color-2, $color-3);
         margin-top: 0;
         padding: 0.5rem 1rem;
     }
     .dashboard-left {
-        min-width: 350px;
-        max-width: 350px;
-        max-height: 560px;
-        min-height: 560px;
+        min-width: 22vw;
+        max-width: 22vw;
+        max-height: 75vh;
+        min-height: 75vh;
         .welcome {
             padding: 1rem 1rem;
             border-radius: 5px;
@@ -295,8 +295,8 @@ body {
             width: 100%;
         }
         @include lg {
-            min-width: 320px;
-            max-width: 320px;
+            min-width: 90vw;
+            max-width: 90vw;
         }
         @include sm {
             min-height: 520px;
@@ -306,10 +306,10 @@ body {
         padding: 1rem;
         border-radius: 10px;
         background-color: $color-3;
-        min-height: 560px;
+        min-height: 75vh;
         overflow-y: scroll;
-        min-width: 350px;
-        max-height: 560px;
+        min-width: 22vw;
+        max-height: 75vh;
         padding-right: 1rem;
         &::-webkit-scrollbar {
             width: 5px;
@@ -357,15 +357,15 @@ body {
             cursor: pointer;
         }
         @include lg {
-            min-width: 320px;
-            max-width: 320px;
+            min-width: 90vw;
+            max-width: 90vw;
         }
     }
     .dashboard-right {
-        min-width: 350px;
-        max-width: 350px;
-        max-height: 560px;
-        min-height: 560px;
+        min-width: 22vw;
+        max-width: 22vw;
+        max-height: 75vh;
+        min-height: 75vh;
         background-image: url('../src/assets/profile-bg.png');
         background-size: cover;
         background-position: center;
@@ -420,12 +420,12 @@ body {
             width: 100%;
         }
         @include lg {
-            min-width: 320px;
-            max-width: 320px;
+            min-width: 90vw;
+            max-width: 90vw;
         }
         @include sm {
-            min-width: 320px;
-            max-width: 320px;
+            min-width: 90vw;
+            max-width: 90vw;
         }
     }
 
@@ -445,10 +445,10 @@ body {
     align-items: center;
     height: 100vh;
     .publicProfile {
-        min-width: 350px;
-        max-width: 350px;
-        max-height: 560px;
-        min-height: 560px;
+        min-width: 22vw;
+        max-width: 22vw;
+        max-height: 75vh;
+        min-height: 75vh;
         background-image: url('../src/assets/profile-bg.png');
         background-size: cover;
         background-position: center;
