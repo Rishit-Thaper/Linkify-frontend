@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 const ShareProfile = () => {
     const { user } = AuthDetails();
-    const profileURL: string = `localhost:5173/${user?.username}`;
+    const profileURL: string = `linkify-kappa.vercel.app/${user?.username}`;
     const copyToClipboard = () => {
         navigator.clipboard.writeText(profileURL);
         toast.success('Profile URL copied to clipboard');

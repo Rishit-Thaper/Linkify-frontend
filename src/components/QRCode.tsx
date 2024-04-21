@@ -8,7 +8,7 @@ import { Profile } from '../@types/global';
 const QRCodeComponent = () => {
     const { user } = AuthDetails();
     const profileData: Profile | null = getLocalData(PROFILE_KEY);
-    const profileURL: string = `localhost:5173/${user?.username}`;
+    const profileURL: string = `linkify-kappa.vercel.app/${user?.username}`;
     const qrRef = useRef<HTMLDivElement>(null);
 
     const downloadQR = () => {

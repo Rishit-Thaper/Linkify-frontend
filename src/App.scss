@@ -227,8 +227,8 @@ body {
     .dashboard-left {
         min-width: 22vw;
         max-width: 22vw;
-        max-height: 75vh;
-        min-height: 75vh;
+        max-height: 60vh;
+        min-height: 60vh;
         .welcome {
             padding: 1rem 1rem;
             border-radius: 5px;
@@ -297,8 +297,8 @@ body {
             max-width: 90vw;
         }
         @include sm {
-            height: 70vh;
-            max-height: 70vh;
+            height: 63vh;
+            max-height: 63vh;
         }
     }
     .dashboard-center {

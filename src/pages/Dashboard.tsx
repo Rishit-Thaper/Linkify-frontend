@@ -32,7 +32,6 @@ const Home = () => {
                     <QRCodeComponent />
                     <button onClick={handleDownloadQR}>Download and Share QR Code</button>
                 </div>
-                <button>Share Feedback</button>
             </div>
             <div className="dashboard-center">
                 <AllLinks />
