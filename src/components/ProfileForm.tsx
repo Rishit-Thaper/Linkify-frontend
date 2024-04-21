@@ -14,8 +14,12 @@ const ProfileForm = () => {
     const { createProfileQuery, updateProfileQuery } = useProfileMutations();
     const [selectedImage, setSelectedImage] = useState<string>();
     const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
+    const [inputType, setInputType] = useState('text');
     const { token } = AuthDetails();
-
+    const handleFocus = () => {
+        setInputType('date');
+    };
+    
     const navigate = useNavigate();
     const {
         register,
@@ -130,7 +134,8 @@ const ProfileForm = () => {
                     <br />
                     <input
                         placeholder="Date of Birth"
-                        type="date"
+                        onFocus={handleFocus}
+                        type={inputType}
                         {...register('dateOfBirth', {
                             required: !profileData ? 'DOB is required' : false,
                         })}
