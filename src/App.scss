@@ -218,14 +218,13 @@ body {
     margin-bottom: 2rem;
     justify-content: space-around;
     gap: 1rem;
-    max-height: 75vh;
+    max-height: 100vh;
     button {
         @include buttonStyle($color-3, $color-2, $color-3);
         margin-top: 0;
         padding: 0.5rem 1rem;
     }
     .dashboard-left {
-        overflow-y: auto;
         min-width: 22vw;
         max-width: 22vw;
         max-height: 75vh;
@@ -298,8 +297,8 @@ body {
             max-width: 90vw;
         }
         @include sm {
-            min-height: 100vh;
-            max-height: 100vh;
+            min-height: 80vh;
+            max-height: 80vh;
         }
     }
     .dashboard-center {
@@ -438,6 +437,7 @@ body {
         align-items: center;
         margin: 0 1rem 0 1rem;
         height: 100vh;
+        max-height: 100vh;
     }
 }
 .public {
