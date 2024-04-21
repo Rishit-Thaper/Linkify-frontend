@@ -5,6 +5,7 @@ import { useSignup } from '../hooks/useSignup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 interface FormInput {
     username: string;
     email: string;
@@ -12,6 +13,7 @@ interface FormInput {
 }
 
 const Form = ({ formType }: { formType: string }) => {
+    const nav = useNavigate();
     const { login, isLoading, error, isSuccess } = useLogin();
     const { signup, isLoading: isPending, error: err, isSuccess: success } = useSignup();
 
@@ -25,9 +27,10 @@ const Form = ({ formType }: { formType: string }) => {
             toast.dismiss();
             if (success || isSuccess) {
                 toast.success('Welcome to YourLink!');
+                nav('/');
             }
         }
-    }, [isLoading, isPending, isSuccess, success, error, err]);
+    }, [isLoading, isPending, isSuccess, nav, success, error, err]);
 
     const {
         register,

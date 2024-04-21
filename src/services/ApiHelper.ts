@@ -1,4 +1,5 @@
 import { API_PROD_BASE_URL } from '../constants/ApiConstants';
+
 const postRequest = async <T>(endpoint: string, data: T, token?: string) => {
     const response = await fetch(API_PROD_BASE_URL + endpoint, {
         method: 'POST',
