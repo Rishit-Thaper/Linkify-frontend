@@ -114,10 +114,8 @@ body {
             font-size: 1rem;
             padding: 0.5rem 0.8rem;
         }
-    
     }
 }
-
 
 .auth-div {
     @include commonStyle();
@@ -210,7 +208,7 @@ body {
             margin-top: 0;
         }
     }
-    @include sm{
+    @include sm {
         width: 300px;
     }
 }
@@ -299,7 +297,7 @@ body {
             max-width: 90vw;
         }
         @include sm {
-            min-height: 520px;
+            min-height: 100vh;
         }
     }
     .dashboard-center {
