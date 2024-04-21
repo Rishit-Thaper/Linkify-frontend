@@ -225,6 +225,7 @@ body {
         padding: 0.5rem 1rem;
     }
     .dashboard-left {
+        overflow-y: auto;
         min-width: 22vw;
         max-width: 22vw;
         max-height: 75vh;
