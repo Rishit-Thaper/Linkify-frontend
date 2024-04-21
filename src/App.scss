@@ -298,6 +298,7 @@ body {
         }
         @include sm {
             min-height: 100vh;
+            max-height: 100vh;
         }
     }
     .dashboard-center {
