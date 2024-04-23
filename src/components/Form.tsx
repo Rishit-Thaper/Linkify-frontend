@@ -26,7 +26,7 @@ const Form = ({ formType }: { formType: string }) => {
         } else {
             toast.dismiss();
             if (success || isSuccess) {
-                toast.success('Welcome to YourLink!');
+                toast.success('Welcome to Linkify!');
                 nav('/');
             }
         }
