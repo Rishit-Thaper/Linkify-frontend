@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
+# Linkify 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Linkify is your ultimate solution for simplifying link management! 🎉 Store all your important links in one place, share a single link, and access everything effortlessly. Plus, generate and share your profile QR code for easy sharing!
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Centralized Link Storage:** Store all your important links in one organized place.
+- **Single Link Sharing:** Share a single link that contains all your stored links.
+- **QR Code Generation:** Generate and share your profile QR code for easy access.
+- **Seamless User Experience:** Enjoy a smooth and intuitive user experience.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Backend:** Node.js, Express.js, MongoDB
+- **Frontend:** React.js
+- **Deployment Platforms:** Rendor.com, Vercel
 
-- Configure the top-level `parserOptions` property like this:
+## Try it Out!
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Say goodbye to link chaos and hello to streamlined organization with Linkify! Try it now: [Linkify](https://linkify-kappa.vercel.app/home) ✨
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Made with ❤️ by Rishit
